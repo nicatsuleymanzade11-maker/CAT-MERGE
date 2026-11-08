@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://dmnsp41hby6md"]
+
+[ext_resource type="Script" uid="uid://p0caiag1gfw3" path="res://dropper.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://yl8hlvqhwqmo" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://b72nr1uc521eq" path="res://Cat images/IMG_20260801_182927.png" id="2_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://c7su511tu25mj" path="res://Cat images/IMG_20260801_182950.png" id="3_w48qg"]
+[ext_resource type="Texture2D" uid="uid://4vnlrehe1nkf" path="res://Cat images/IMG_20260801_183008.png" id="4_vivmo"]
+[ext_resource type="Texture2D" uid="uid://3pwrha5w2jos" path="res://Cat images/IMG_20260801_183115.png" id="5_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://uo6iywwkqlo8" path="res://Cat images/IMG_20260801_183147.png" id="6_yaehf"]
+[ext_resource type="Texture2D" uid="uid://pumsx6dd4et2" path="res://Cat images/IMG_20260801_183205.png" id="7_074og"]
+[ext_resource type="Texture2D" uid="uid://byta4clkl4mmo" path="res://Cat images/IMG_20260801_183223.png" id="8_cegan"]
+[ext_resource type="Texture2D" uid="uid://c8ol3sjs3jd54" path="res://Cat images/IMG_20260801_183247.png" id="9_82xsv"]
+[ext_resource type="Texture2D" uid="uid://dundi4pfcvuod" path="res://Cat images/IMG_20260801_183309.png" id="10_getpj"]
+[ext_resource type="Texture2D" uid="uid://ydjifvx2he0s" path="res://Cat images/IMG_20260801_183325.png" id="11_ryguw"]
+[ext_resource type="Texture2D" uid="uid://bppk13qydlmyq" path="res://Cat images/IMG_20260801_183345.png" id="12_d13ii"]
+[ext_resource type="Script" uid="uid://c2n2271d8muw1" path="res://pause_menu.gd" id="14_w48qg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(620, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(32, 760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(32, 760)
+
+[node name="Main" type="Node2D" unique_id=1662174455]
+
+[node name="Box" type="StaticBody2D" parent="." unique_id=467624402]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box" unique_id=996984347]
+position = Vector2(360, 1133.5)
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Box" unique_id=683090845]
+position = Vector2(34, 776)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Box" unique_id=1769671756]
+position = Vector2(686, 776)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Dropper" type="Marker2D" parent="." unique_id=1191750724 node_paths=PackedStringArray("visual_preview", "next_cat_ui", "score_label")]
+position = Vector2(384, 159)
+script = ExtResource("1_ig7tw")
+visual_preview = NodePath("Icon")
+next_cat_ui = NodePath("../CanvasLayer/ColorRect/NextCatImage")
+score_label = NodePath("../CanvasLayer/ScoreText")
+cat_textures = Array[Texture2D]([ExtResource("2_ycdy4"), ExtResource("3_w48qg"), ExtResource("4_vivmo"), ExtResource("5_2cqfq"), ExtResource("6_yaehf"), ExtResource("7_074og"), ExtResource("8_cegan"), ExtResource("9_82xsv"), ExtResource("10_getpj"), ExtResource("11_ryguw"), ExtResource("12_d13ii")])
+
+[node name="Icon" type="Sprite2D" parent="Dropper" unique_id=1864526168]
+position = Vector2(3, 2)
+texture = ExtResource("2_0xm2m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1631801017]
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer" unique_id=1188244835]
+anchors_preset = -1
+anchor_right = 0.30100003
+anchor_bottom = 0.22200002
+offset_right = -94.72002
+offset_bottom = -156.16003
+
+[node name="PauseMenuOverlay" type="ColorRect" parent="CanvasLayer/PauseButton" unique_id=737301791]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.085
+anchor_right = 17.661001
+anchor_bottom = 31.675001
+offset_left = 43.4
+offset_right = -1448.6421
+offset_bottom = -2190.4001
+color = Color(0, 8.826238e-05, 4.222386e-05, 0.08235294)
+script = ExtResource("14_w48qg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseButton/PauseMenuOverlay" unique_id=477300286]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157
+anchor_top = 0.25300002
+anchor_right = 0.83400005
+anchor_bottom = 0.54
+offset_left = -0.25500488
+offset_top = -0.27702332
+offset_right = -0.3100586
+offset_bottom = 0.13995361
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer" unique_id=1349204437]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer" unique_id=233257049]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer" unique_id=1953183741]
+layout_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer" unique_id=1255927277]
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer" unique_id=1321202247]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1617132340]
+offset_left = 490.0
+offset_top = 42.0
+offset_right = 629.0
+offset_bottom = 178.0
+
+[node name="NextCatImage" type="TextureRect" parent="CanvasLayer/ColorRect" unique_id=1904026053]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99300003
+anchor_bottom = 0.95600003
+offset_left = 31.0
+offset_top = 28.0
+offset_right = -27.027008
+offset_bottom = -37.016006
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreText" type="Label" parent="CanvasLayer" unique_id=906286775]
+anchors_preset = -1
+anchor_left = 0.21000001
+anchor_right = 0.38700002
+anchor_bottom = 0.095000006
+offset_left = -0.2000122
+offset_top = 2.0
+offset_right = 0.35998535
+offset_bottom = -0.6000061
+theme_override_font_sizes/font_size = 45
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=113348433]
+position = Vector2(360, 753.5)
+scale = Vector2(4.843751, 5.5859365)
+texture = ExtResource("2_0xm2m")
+
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseButton/PauseMenuOverlay" method="open_menu"]
+[connection signal="pressed" from="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer/ResumeButton" to="CanvasLayer/PauseButton/PauseMenuOverlay" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer/HomeButton" to="CanvasLayer/PauseButton/PauseMenuOverlay" method="_on_home_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer/SFXSlider" to="CanvasLayer/PauseButton/PauseMenuOverlay" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/PauseButton/PauseMenuOverlay/VBoxContainer/MusicSlider" to="CanvasLayer/PauseButton/PauseMenuOverlay" method="_on_music_slider_value_changed"]

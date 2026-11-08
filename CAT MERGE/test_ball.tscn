@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bkarrcpf3osqg"]
+
+[ext_resource type="Texture2D" uid="uid://yl8hlvqhwqmo" path="res://icon.svg" id="1_26nax"]
+[ext_resource type="Script" uid="uid://cg447olich57e" path="res://test_ball.gd" id="1_v56ve"]
+[ext_resource type="Texture2D" uid="uid://b72nr1uc521eq" path="res://Cat images/IMG_20260801_182927.png" id="2_nbbbo"]
+[ext_resource type="Texture2D" uid="uid://c7su511tu25mj" path="res://Cat images/IMG_20260801_182950.png" id="3_nlm7h"]
+[ext_resource type="Texture2D" uid="uid://4vnlrehe1nkf" path="res://Cat images/IMG_20260801_183008.png" id="4_rujtk"]
+[ext_resource type="Texture2D" uid="uid://3pwrha5w2jos" path="res://Cat images/IMG_20260801_183115.png" id="5_m5kbv"]
+[ext_resource type="Texture2D" uid="uid://uo6iywwkqlo8" path="res://Cat images/IMG_20260801_183147.png" id="6_iyduo"]
+[ext_resource type="Texture2D" uid="uid://pumsx6dd4et2" path="res://Cat images/IMG_20260801_183205.png" id="7_a82ba"]
+[ext_resource type="Texture2D" uid="uid://byta4clkl4mmo" path="res://Cat images/IMG_20260801_183223.png" id="8_h4y44"]
+[ext_resource type="Texture2D" uid="uid://c8ol3sjs3jd54" path="res://Cat images/IMG_20260801_183247.png" id="9_uegd8"]
+[ext_resource type="Texture2D" uid="uid://dundi4pfcvuod" path="res://Cat images/IMG_20260801_183309.png" id="10_w3cqm"]
+[ext_resource type="Texture2D" uid="uid://ydjifvx2he0s" path="res://Cat images/IMG_20260801_183325.png" id="11_08iki"]
+[ext_resource type="Texture2D" uid="uid://bppk13qydlmyq" path="res://Cat images/IMG_20260801_183345.png" id="12_hfxa8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nbbbo"]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7b7a"]
+radius = 90.0
+
+[node name="Test Ball" type="RigidBody2D" unique_id=1995777176 node_paths=PackedStringArray("cat_sprite", "collision_shape") groups=["balls"]]
+process_thread_group = 2
+process_thread_group_order = 1
+process_thread_messages = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+physics_material_override = SubResource("PhysicsMaterial_nbbbo")
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_v56ve")
+cat_sprite = NodePath("Sprite2D")
+collision_shape = NodePath("CollisionShape2D")
+cat_textures = Array[Texture2D]([ExtResource("2_nbbbo"), ExtResource("3_nlm7h"), ExtResource("4_rujtk"), ExtResource("5_m5kbv"), ExtResource("6_iyduo"), ExtResource("7_a82ba"), ExtResource("8_h4y44"), ExtResource("9_uegd8"), ExtResource("10_w3cqm"), ExtResource("11_08iki"), ExtResource("12_hfxa8")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=800730393 groups=["balls"]]
+shape = SubResource("CircleShape2D_g7b7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=204116599]
+position = Vector2(1, 1)
+texture = ExtResource("1_26nax")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
